@@ -91,12 +91,13 @@ export const OrganizationPage: Component = () => {
                   </Show>
                 </div>
 
+            
                <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-12">
 
                   <Button onClick={promptImport} class="h-auto items-start flex-col gap-4 py-4 px-6">
                     <div class="i-tabler-upload size-6"></div>
 
-                    {t('organizations.details.upload-documents')}
+                    {t('organizations.details.generale')}
                   </Button>
 
                   <Show when={query[1].data?.organizationStats}>
@@ -108,7 +109,7 @@ export const OrganizationPage: Component = () => {
                               {organizationStats().documentsCount}
                             </span>
                             <span class="text-muted-foreground">
-                              {t('organizations.details.documents-count')}
+                              {t('organizations.details.debitare')}
                             </span>
                           </div>
                         </div>
@@ -119,7 +120,7 @@ export const OrganizationPage: Component = () => {
                               {formatBytes({ bytes: organizationStats().documentsSize, base: 1000 })}
                             </span>
                             <span class="text-muted-foreground">
-                              {t('organizations.details.total-size')}
+                              {t('organizations.details.cnc')}
                             </span>
                           </div>
                         </div>
