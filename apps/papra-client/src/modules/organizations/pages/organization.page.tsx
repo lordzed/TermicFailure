@@ -94,25 +94,25 @@ export const OrganizationPage: Component = () => {
             
                <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-12">
 
-                  <Button onClick={promptImport} class="h-auto items-start flex-col gap-4 py-4 px-6">
-                    <div class="i-tabler-upload size-6"></div>
-
-                    {t('organizations.details.generale')}
-                  </Button>
-
-                  <Show when={query[1].data?.organizationStats}>
-                    {organizationStats => (
-                      <>
                         <div class="border rounded-lg p-2 flex items-center gap-4 py-4 px-6">
                           <div class="flex gap-2 items-baseline">
                             <span class="font-light text-2xl">
-                              {organizationStats().documentsCount}
+                              {formatBytes({ bytes: organizationStats().documentsSize, base: 1000 })}
                             </span>
                             <span class="text-muted-foreground">
-                              {t('organizations.details.debitare')}
+                              {t('organizations.details.general')}
                             </span>
                           </div>
-                        </div>
+
+                        <div class="border rounded-lg p-2 flex items-center gap-4 py-4 px-6">
+                          <div class="flex gap-2 items-baseline">
+                            <span class="font-light text-2xl">
+                              {formatBytes({ bytes: organizationStats().documentsSize, base: 1000 })}
+                            </span>
+                            <span class="text-muted-foreground">
+                              {t('organizations.details.productie')}
+                            </span>
+                          </div>
 
                         <div class="border rounded-lg p-2 flex items-center gap-4 py-4 px-6">
                           <div class="flex gap-2 items-baseline">
