@@ -1,35 +1,14 @@
-version: "1.0"
 services:
-  termicfailure:
-    image: lordzed/termicfailure
-    container_name: Management_ERP
-    network_mode: bridge
+  papra:
+    image: ghcr.io/papra-hq/papra:latest
+    container_name: papra
+    restart: unless-stopped
     ports:
-      - 1221:1221/tcp
-    volumes:
-      - ./data:/app/data
+      - 1221:1221
     environment:
-      - CONFIG=
-      - PERIOD=5m
-      - UPDATE_COOLDOWN_PERIOD=5m
-      - PUBLICIP_FETCHERS=all
-      - PUBLICIP_HTTP_PROVIDERS=all
-      - PUBLICIPV4_HTTP_PROVIDERS=all
-      - PUBLICIPV6_HTTP_PROVIDERS=all
-      - PUBLICIP_DNS_PROVIDERS=all
-      - PUBLICIP_DNS_TIMEOUT=3s
-      - HTTP_TIMEOUT=10s
-
-      # Web UI
-      - LISTENING_ADDRESS=:8000
-      - ROOT_URL=/
-
-      # Backup
-      - BACKUP_PERIOD=0 # 0 to disable
-      - BACKUP_DIRECTORY=/zederp/data
-
-      # Other
-      - LOG_LEVEL=info
-      - LOG_CALLER=hidden
-      - SHOUTRRR_ADDRESSES=
-    restart: always
+      - AUTH_SECRET=nY2lvLcTJOTBGuYndmTKsOYXHep4Tzr5pvQo7Nmi5M4Oa66V
+      - CLIENT_BASE_URL=http://localhost:1221
+      - SERVER_BASE_URL=http://localhost:1221
+    volumes:
+      - ./app-data:/app/app-data
+    user: 1000:1000
