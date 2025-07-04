@@ -9,6 +9,7 @@ services:
       - AUTH_SECRET=nY2lvLcTJOTBGuYndmTKsOYXHep4Tzr5pvQo7Nmi5M4Oa66V
       - CLIENT_BASE_URL=http://localhost:1221
       - SERVER_BASE_URL=http://localhost:1221
+      - GITHUB_TOKEN=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
     volumes:
       - ./app-data:/app/app-data
     user: 1000:1000
