@@ -107,6 +107,10 @@ organizations.details.documents-count: documents in total
 organizations.details.total-size: total size
 organizations.details.latest-documents: Latest imported documents
 
+organizations.details.generale: Documente Generale
+organizations.details.debitare: Debitare
+organizations.details.cnc: Prelucrare CNC
+
 organizations.create.title: Create a new organization
 organizations.create.description: Your documents will be grouped by organization. You can create multiple organizations to separate your documents, for example, for personal and work documents.
 organizations.create.back: Back
