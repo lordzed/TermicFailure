@@ -39,113 +39,113 @@ export const OrganizationPage: Component = () => {
       <Suspense>
         {query[0].data?.documents?.length === 0
           ? (
-              <>
-                <h2 class="text-xl font-bold ">
-                  {t('organizations.details.no-documents.title')}
-                </h2>
+            <>
+              <h2 class="text-xl font-bold ">
+                {t('organizations.details.no-documents.title')}
+              </h2>
 
-                <p class="text-muted-foreground mt-1 mb-6">
-                  {t('organizations.details.no-documents.description')}
-                </p>
+              <p class="text-muted-foreground mt-1 mb-6">
+                {t('organizations.details.no-documents.description')}
+              </p>
 
-                <DocumentUploadArea />
+              <DocumentUploadArea />
 
-              </>
-            )
+            </>
+          )
           : (
-              <>
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-12">
+            <>
+              {/* This div was already correctly structured for initial stats */}
+              <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-12">
+                <Button onClick={promptImport} class="h-auto items-start flex-col gap-4 py-4 px-6">
+                  <div class="i-tabler-upload size-6"></div>
+                  {t('organizations.details.upload-documents')}
+                </Button>
 
-                  <Button onClick={promptImport} class="h-auto items-start flex-col gap-4 py-4 px-6">
-                    <div class="i-tabler-upload size-6"></div>
-
-                    {t('organizations.details.upload-documents')}
-                  </Button>
-
-                  <Show when={query[1].data?.organizationStats}>
-                    {organizationStats => (
-                      <>
-                        <div class="border rounded-lg p-2 flex items-center gap-4 py-4 px-6">
-                          <div class="flex gap-2 items-baseline">
-                            <span class="font-light text-2xl">
-                              {organizationStats().documentsCount}
-                            </span>
-                            <span class="text-muted-foreground">
-                              {t('organizations.details.documents-count')}
-                            </span>
-                          </div>
+                {/* The main Show block for organizationStats, including the new metrics */}
+                <Show when={query[1].data?.organizationStats}>
+                  {organizationStats => (
+                    <>
+                      <div class="border rounded-lg p-2 flex items-center gap-4 py-4 px-6">
+                        <div class="flex gap-2 items-baseline">
+                          <span class="font-light text-2xl">
+                            {organizationStats().documentsCount}
+                          </span>
+                          <span class="text-muted-foreground">
+                            {t('organizations.details.documents-count')}
+                          </span>
                         </div>
+                      </div>
 
-                        <div class="border rounded-lg p-2 flex items-center gap-4 py-4 px-6">
-                          <div class="flex gap-2 items-baseline">
-                            <span class="font-light text-2xl">
-                              {formatBytes({ bytes: organizationStats().documentsSize, base: 1000 })}
-                            </span>
-                            <span class="text-muted-foreground">
-                              {t('organizations.details.total-size')}
-                            </span>
-                          </div>
+                      <div class="border rounded-lg p-2 flex items-center gap-4 py-4 px-6">
+                        <div class="flex gap-2 items-baseline">
+                          <span class="font-light text-2xl">
+                            {formatBytes({ bytes: organizationStats().documentsSize, base: 1000 })}
+                          </span>
+                          <span class="text-muted-foreground">
+                            {t('organizations.details.total-size')}
+                          </span>
                         </div>
-                      </>
-                    )}
-                  </Show>
-                </div>
+                      </div>
 
-            
-               <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-12">
-
-                        <div class="border rounded-lg p-2 flex items-center gap-4 py-4 px-6">
-                          <div class="flex gap-2 items-baseline">
-                            <span class="font-light text-2xl">
-                              {formatBytes({ bytes: organizationStats().documentsSize, base: 1000 })}
-                            </span>
-                            <span class="text-muted-foreground">
-                              {t('organizations.details.general')}
-                            </span>
-                          </div>
-
-                        <div class="border rounded-lg p-2 flex items-center gap-4 py-4 px-6">
-                          <div class="flex gap-2 items-baseline">
-                            <span class="font-light text-2xl">
-                              {formatBytes({ bytes: organizationStats().documentsSize, base: 1000 })}
-                            </span>
-                            <span class="text-muted-foreground">
-                              {t('organizations.details.productie')}
-                            </span>
-                          </div>
-
-                        <div class="border rounded-lg p-2 flex items-center gap-4 py-4 px-6">
-                          <div class="flex gap-2 items-baseline">
-                            <span class="font-light text-2xl">
-                              {formatBytes({ bytes: organizationStats().documentsSize, base: 1000 })}
-                            </span>
-                            <span class="text-muted-foreground">
-                              {t('organizations.details.cnc')}
-                            </span>
-                          </div>
+                      {/* --- New Section for General, Productie, CNC --- */}
+                      {/* Assuming organizationStats() now contains these properties */}
+                      <div class="border rounded-lg p-2 flex items-center gap-4 py-4 px-6">
+                        <div class="flex gap-2 items-baseline">
+                          <span class="font-light text-2xl">
+                            {/* Replace with actual general size data from organizationStats */}
+                            {formatBytes({ bytes: organizationStats().generalSize ?? 0, base: 1000 })}
+                          </span>
+                          <span class="text-muted-foreground">
+                            {t('organizations.details.general')}
+                          </span>
                         </div>
-                      </>
-                    )}
-                  </Show>
-                </div>
-            
-                <h2 class="text-lg font-semibold mb-4">
-                  {t('organizations.details.latest-documents')}
-                </h2>
+                      </div>
 
-                <DocumentsPaginatedList
-                  documents={query[0].data?.documents ?? []}
-                  documentsCount={query[0].data?.documentsCount ?? 0}
-                  getPagination={getPagination}
-                  setPagination={setPagination}
-                  extraColumns={[
-                    tagsColumn,
-                    createdAtColumn,
-                    standardActionsColumn,
-                  ]}
-                />
-              </>
-            )}
+                      <div class="border rounded-lg p-2 flex items-center gap-4 py-4 px-6">
+                        <div class="flex gap-2 items-baseline">
+                          <span class="font-light text-2xl">
+                            {/* Replace with actual production size data from organizationStats */}
+                            {formatBytes({ bytes: organizationStats().productieSize ?? 0, base: 1000 })}
+                          </span>
+                          <span class="text-muted-foreground">
+                            {t('organizations.details.productie')}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div class="border rounded-lg p-2 flex items-center gap-4 py-4 px-6">
+                        <div class="flex gap-2 items-baseline">
+                          <span class="font-light text-2xl">
+                            {/* Replace with actual CNC size data from organizationStats */}
+                            {formatBytes({ bytes: organizationStats().cncSize ?? 0, base: 1000 })}
+                          </span>
+                          <span class="text-muted-foreground">
+                            {t('organizations.details.cnc')}
+                          </span>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </Show>
+              </div>
+
+              <h2 class="text-lg font-semibold mb-4">
+                {t('organizations.details.latest-documents')}
+              </h2>
+
+              <DocumentsPaginatedList
+                documents={query[0].data?.documents ?? []}
+                documentsCount={query[0].data?.documentsCount ?? 0}
+                getPagination={getPagination}
+                setPagination={setPagination}
+                extraColumns={[
+                  tagsColumn,
+                  createdAtColumn,
+                  standardActionsColumn,
+                ]}
+              />
+            </>
+          )}
       </Suspense>
     </div>
   );

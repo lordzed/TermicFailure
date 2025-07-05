@@ -86,7 +86,7 @@ user.settings.email.label: Adresă de email
 user.settings.name.title: Nume complet
 user.settings.name.description: Numele tău complet este afișat celorlalți membri ai organizației.
 user.settings.name.label: Nume complet
-user.settings.name.placeholder: Ex: Ion Popescu
+user.settings.name.placeholder: Ex. Ion Popescu
 user.settings.name.update: Actualizează numele
 user.settings.name.updated: Numele tău complet a fost actualizat
 
@@ -117,7 +117,7 @@ organizations.create.description: Documentele tale vor fi grupate pe organizați
 organizations.create.back: Înapoi
 organizations.create.error.max-count-reached: Ai atins numărul maxim de organizații pe care le poți crea. Dacă ai nevoie să creezi mai multe, te rugăm să contactezi asistența.
 organizations.create.form.name.label: Numele organizației
-organizations.create.form.name.placeholder: Ex: Acme SRL
+organizations.create.form.name.placeholder: Ex. Acme SRL
 organizations.create.form.name.required: Te rugăm să introduci un nume pentru organizație
 organizations.create.form.submit: Creează organizație
 organizations.create.success: Organizație creată cu succes
@@ -132,7 +132,7 @@ organization.settings.page.title: Setări organizație
 organization.settings.page.description: Gestionează-ți setările organizației aici.
 organization.settings.name.title: Numele organizației
 organization.settings.name.update: Actualizează numele
-organization.settings.name.placeholder: Ex: Acme SRL
+organization.settings.name.placeholder: Ex. Acme SRL
 organization.settings.name.updated: Numele organizației actualizat
 organization.settings.subscription.title: Abonament
 organization.settings.subscription.description: Gestionează-ți facturarea, facturile și metodele de plată.
@@ -313,7 +313,7 @@ tags.delete.success: Eticheta a fost ștearsă cu succes
 tags.create.success: Eticheta „{{ name }}” a fost creată cu succes.
 tags.update.success: Eticheta „{{ name }}” a fost actualizată cu succes.
 tags.form.name.label: Nume
-tags.form.name.placeholder: Ex: Contracte
+tags.form.name.placeholder: Ex. Contracte
 tags.form.name.required: Te rugăm să introduci un nume pentru etichetă
 tags.form.name.max-length: Numele etichetei trebuie să aibă mai puțin de 64 de caractere
 tags.form.color.label: Culoare
@@ -321,7 +321,7 @@ tags.form.color.required: Te rugăm să introduci o culoare
 tags.form.color.invalid: Culoarea hex este formatată incorect.
 tags.form.description.label: Descriere
 tags.form.description.optional: (opțional)
-tags.form.description.placeholder: Ex: Toate contractele semnate de companie
+tags.form.description.placeholder: Ex. Toate contractele semnate de companie
 tags.form.description.max-length: Descrierea trebuie să aibă mai puțin de 256 de caractere
 tags.form.no-description: Fără descriere
 tags.table.headers.tag: Etichetă
@@ -412,7 +412,7 @@ intake-emails.update.success.disabled: Email de intrare dezactivat
 intake-emails.allowed-origins.title: Origini permise
 intake-emails.allowed-origins.description: Vor fi procesate doar emailurile trimise la {{ email }} de la aceste origini. Dacă nu sunt specificate origini, toate emailurile vor fi eliminate.
 intake-emails.allowed-origins.add.label: Adaugă email de origine permis
-intake-emails.allowed-origins.add.placeholder: Ex: ada@papra.app
+intake-emails.allowed-origins.add.placeholder: Ex. ada@papra.app
 intake-emails.allowed-origins.add.button: Adaugă
 intake-emails.allowed-origins.add.error.exists: Acest email există deja în originile permise pentru acest email de intrare
 
